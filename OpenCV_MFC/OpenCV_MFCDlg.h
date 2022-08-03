@@ -44,4 +44,5 @@ public:
 	//OpenCV 관련
 	class_OpenCV_cusmtom OpenCV_Al;
 	CStatic m_Picture_1;
+	afx_msg void OnBnClickedBtnCapture();
 };

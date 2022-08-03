@@ -16,4 +16,6 @@ public:
 	CImage cimage_mfc;
 	void DisplayImage_BitBit(Mat Displayimage);
 
+	// 화면 캡처 기능
+	Mat hwnd2mat(HWND hwnd);
 };

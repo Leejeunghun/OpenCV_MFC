@@ -8,6 +8,16 @@
 #include "OpenCV_MFCDlg.h"
 #include "afxdialogex.h"
 
+#include <Windows.h>
+
+#include "opencv2/imgproc.hpp"
+#include "opencv2/highgui.hpp"
+#include <Windows.h>
+#include <iostream>
+
+using namespace std;
+using namespace cv;
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -37,6 +47,7 @@ BEGIN_MESSAGE_MAP(COpenCVMFCDlg, CDialogEx)
 	ON_EN_CHANGE(IDC_ED_LOG, &COpenCVMFCDlg::OnEnChangeEdLog)
 	ON_BN_CLICKED(IDC_BTN_LOG, &COpenCVMFCDlg::OnBnClickedBtnLog)
 	ON_BN_CLICKED(IDC_BUTTON2, &COpenCVMFCDlg::OnBnClickedButton2)
+	ON_BN_CLICKED(IDC_BTN_CAPTURE, &COpenCVMFCDlg::OnBnClickedBtnCapture)
 END_MESSAGE_MAP()
 
 
@@ -119,4 +130,15 @@ void COpenCVMFCDlg::OnBnClickedButton2()
 {
 	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
 	OpenCV_Al.DisplayImage_BitBit(OpenCV_Al.ImshowTest());
+}
+
+
+void COpenCVMFCDlg::OnBnClickedBtnCapture()
+{
+	// TODO: 여기에 컨트롤 알림 처리기 코드를 추가합니다.
+	HWND hwndDesktop ;
+	hwndDesktop = ::GetDesktopWindow();
+	Mat src = OpenCV_Al.hwnd2mat(hwndDesktop);
+	OpenCV_Al.DisplayImage_BitBit(src);
+	
 }
